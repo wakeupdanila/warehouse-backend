@@ -51,7 +51,7 @@ The application will start running on `http://localhost:9090`.
       "quantity": 10,
       "category": "food",
       "manufacturer": "Egg Corporation",
-      "expiryDate": 12.02.2024,
+      "expiryDate": 2024-03-12,
       "location": "Katowice",
       "barcode": "123456789"
   }
@@ -76,7 +76,7 @@ The application will start running on `http://localhost:9090`.
       "quantity": 12,
       "category": "food",
       "manufacturer": "Egg Corporation",
-      "expiryDate": 01.02.2024,
+      "expiryDate": 2024-03-03,
       "location": "Katowice",
       "barcode": "123456789"
   }
