@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  warehouse-backend:
+    image: openjdk:17-jdk-alpine
+    volumes:
+      - ./target/warehouse-backend.jar:/app/warehouse-backend.jar
+    ports:
+      - "9090:9090"
+    command: ["java", "-jar", "/app/warehouse-backend.jar"]
