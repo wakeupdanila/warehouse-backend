@@ -1,10 +1,12 @@
 package com.drusak.warehousebackend.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Items")
@@ -22,4 +24,25 @@ public class Item {
 
     @Column
     private String description;
+
+    @Column(nullable = false)
+    private BigDecimal price;
+
+    @Column(nullable = false)
+    private int quantity;
+
+    @Column
+    private String category;
+
+    @Column
+    private String manufacturer;
+
+    @Column
+    private LocalDate expiryDate;
+
+    @Column
+    private String location;
+
+    @Column
+    private String barcode;
 }

@@ -2,12 +2,11 @@ package com.drusak.warehousebackend.controller;
 
 import com.drusak.warehousebackend.model.Item;
 import com.drusak.warehousebackend.repository.ItemRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/items")
@@ -20,8 +19,8 @@ public class ItemController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Item>> getAllItems() {
-        List<Item> items = itemRepository.findAll();
+    public ResponseEntity<Page<Item>> getAllItems(Pageable pageable) {
+        Page<Item> items = itemRepository.findAll(pageable);
         if (items.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -30,8 +29,8 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Item> getItemById(@PathVariable Long id) {
-        Optional<Item> itemOptional = itemRepository.findById(id);
-        return itemOptional.map(ResponseEntity::ok)
+        return itemRepository.findById(id)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
